@@ -147,7 +147,7 @@ if __name__ == '__main__':
     global ACCOUNT_KEY, API_KEY, TO_TS, FROM_TS
 
     def date(value):
-        return datetime.datetime.strptime(value, '%d.%m.%Y').date()
+         return datetime.datetime.strptime(value, '%d.%m.%YT%H.%M.%S')
 
     parser = argparse.ArgumentParser(description='Query Logentries API')
     parser.add_argument('--api-key', type=str, action='store',
@@ -158,9 +158,9 @@ if __name__ == '__main__':
     parser.add_argument('--host-name', type=str, action='store',
                         help='(optional) A Logentries Log set name')
     parser.add_argument('--from-date', type=date, action='store', required=True,
-                        help='Retrieve log FROM this date (fmt: DD.MM.YYYY)')
+                        help='Retrieve log FROM this date (fmt: DD.MM.YYYYThh.mm.ss)')
     parser.add_argument('--to-date', type=date, action='store', default=datetime.date.today(),
-                        help='(optional) Retrieve log TO this date (fmt: DD.MM.YYYY, default: today)')
+                        help='(optional) Retrieve log TO this date (fmt: DD.MM.YYYYThh.mm.ss, default: today)')
     parser.add_argument('--save-file', type=str, action='store', default='results.csv',
                         help='(optional) CSV file to save results (default: results.csv)')
     args = parser.parse_args()
